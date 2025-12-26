@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edison Ayran - Data Science Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-dark: #0a0e27;
+            --bg-card: #1a1f3a;
+            --accent: #6366f1;
+            --accent-hover: #818cf8;
+            --text-primary: #f8fafc;
+            --text-secondary: #cbd5e1;
+            --border: #334155;
+        }
+
+        body {
+            font-family: 'Work Sans', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .grain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+        }
+
+        header {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.1;
+            background: radial-gradient(circle at 20% 50%, var(--accent) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, #8b5cf6 0%, transparent 50%);
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(30px, -30px) rotate(2deg); }
+            66% { transform: translate(-20px, 20px) rotate(-2deg); }
+        }
+
+        .hero-content {
+            position: relative;
+            text-align: center;
+            padding: 2rem;
+            max-width: 1200px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 900;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-hover) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 1s ease-out 0.2s backwards;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-weight: 300;
+            animation: fadeInUp 1s ease-out 0.4s backwards;
+        }
+
+        .hero-description {
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            animation: fadeInUp 1s ease-out 0.6s backwards;
+        }
+
+        .contact-info {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+            animation: fadeInUp 1s ease-out 0.8s backwards;
+        }
+
+        .contact-info a {
+            color: var(--accent-hover);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-10px); }
+            60% { transform: translateX(-50%) translateY(-5px); }
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section {
+            margin-bottom: 8rem;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            margin: 1rem auto;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .skill-card {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            box-shadow: 0 10px 40px rgba(99, 102, 241, 0.2);
+        }
+
+        .skill-card h3 {
+            color: var(--accent-hover);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-tag {
+            background: rgba(99, 102, 241, 0.1);
+            color: var(--accent-hover);
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+        }
+
+        .projects-grid {
+            display: grid;
+            gap: 3rem;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            transition: all 0.4s ease;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(99, 102, 241, 0.15);
+            border-color: var(--accent);
+        }
+
+        .project-header {
+            background: linear-gradient(135deg, var(--accent) 0%, #8b5cf6 100%);
+            padding: 2.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h60v60H0z' fill='none'/%3E%3Cpath d='M0 0h30v30H0zm30 30h30v30H30z' fill='%23fff' fill-opacity='0.05'/%3E%3C/svg%3E");
+        }
+
+        .project-header h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+
+        .project-meta {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            position: relative;
+        }
+
+        .project-body {
+            padding: 2.5rem;
+        }
+
+        .project-description {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .findings-section {
+            margin-top: 2rem;
+        }
+
+        .findings-section h4 {
+            color: var(--accent-hover);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .findings-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .findings-list li {
+            padding: 1rem;
+            margin-bottom: 0.8rem;
+            background: rgba(99, 102, 241, 0.05);
+            border-left: 3px solid var(--accent);
+            border-radius: 4px;
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+        }
+
+        .findings-list li:hover {
+            background: rgba(99, 102, 241, 0.1);
+            transform: translateX(5px);
+        }
+
+        .findings-list strong {
+            color: var(--text-primary);
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 2rem;
+        }
+
+        .tech-badge {
+            background: rgba(99, 102, 241, 0.1);
+            color: var(--accent-hover);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            border: 1px solid rgba(99, 102, 241, 0.3);
+        }
+
+        .project-link {
+            display: inline-block;
+            margin-top: 1.5rem;
+            padding: 0.8rem 1.5rem;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .project-link:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(99, 102, 241, 0.4);
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .project-link-secondary {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background: transparent;
+            color: var(--accent-hover);
+            text-decoration: none;
+            border-radius: 8px;
+            border: 1px solid var(--accent);
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .project-link-secondary:hover {
+            background: rgba(99, 102, 241, 0.1);
+            transform: translateY(-2px);
+            border-color: var(--accent-hover);
+        }
+
+        footer {
+            background: var(--bg-card);
+            padding: 3rem 2rem;
+            text-align: center;
+            border-top: 1px solid var(--border);
+            margin-top: 4rem;
+        }
+
+        footer p {
+            color: var(--text-secondary);
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="grain"></div>
+    
+    <header>
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <h1>Edison Ayran</h1>
+            <p class="hero-subtitle">Data Science Student • UC San Diego</p>
+            <p class="hero-description">
+                Passionate about leveraging machine learning and statistical analysis to solve real-world problems. 
+                Experienced in building <strong>collaborative filtering recommendation systems</strong> for e-commerce platforms, 
+                developing <strong>time series forecasting models</strong> using Prophet and ARIMA for retail sales prediction, 
+                and creating <strong>NLP sentiment analysis pipelines</strong> with VADER and RoBERTa. Skilled in 
+                <strong>customer segmentation using KMeans clustering</strong>, <strong>churn prediction with Random Forest</strong>, 
+                and <strong>feature engineering for regression tasks</strong>. Proficient in <strong>model evaluation</strong>, <strong>hyperparameter 
+                tuning with GridSearchCV</strong>, and conducting <strong>fairness analysis</strong> to ensure ethical ML deployment.
+            </p>
+            <p class="hero-description" style="margin-top: 1rem; font-size: 1rem;">
+                Currently pursuing B.S. in Data Science at UC San Diego. Experience includes developing 
+                AI-powered tools for resume screening, building recommendation systems for streaming platforms, and 
+                analyzing sports performance data.
+            </p>
+            <div class="contact-info">
+                <a href="tel:+16196537725">📞 (619) 653-7725</a>
+                <a href="/cdn-cgi/l/email-protection#e386878a908c8d829a91828dd5daa3848e828a8fcd808c8e">📧 <span class="__cf_email__" data-cfemail="bbdedfd2c8d4d5dac2c9dad58d82fbdcd6dad2d795d8d4d6">[email&#160;protected]</span></a>
+                <a href="https://www.linkedin.com/in/edison-ayran-0859082b3/" target="_blank">💼 LinkedIn</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Skills Section -->
+        <section class="section">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3>Programming Languages</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">R</span>
+                        <span class="skill-tag">Java</span>
+                        <span class="skill-tag">SQL</span>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <h3>Data Science Libraries</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">NumPy</span>
+                        <span class="skill-tag">Pandas</span>
+                        <span class="skill-tag">Scikit-Learn</span>
+                        <span class="skill-tag">PyTorch</span>
+                        <span class="skill-tag">Statsmodels</span>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <h3>Machine Learning Models</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Linear Regression</span>
+                        <span class="skill-tag">Ridge/Lasso</span>
+                        <span class="skill-tag">Random Forest</span>
+                        <span class="skill-tag">XGBoost</span>
+                        <span class="skill-tag">Gradient Boosting</span>
+                        <span class="skill-tag">KMeans Clustering</span>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <h3>ML Techniques & Methods</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Collaborative Filtering</span>
+                        <span class="skill-tag">Matrix Factorization</span>
+                        <span class="skill-tag">Feature Engineering</span>
+                        <span class="skill-tag">GridSearchCV</span>
+                        <span class="skill-tag">PCA</span>
+                        <span class="skill-tag">One-Hot Encoding</span>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <h3>Time Series & NLP</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Prophet</span>
+                        <span class="skill-tag">ARIMA</span>
+                        <span class="skill-tag">VADER</span>
+                        <span class="skill-tag">RoBERTa</span>
+                        <span class="skill-tag">NLTK</span>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <h3>Statistical Analysis</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Hypothesis Testing</span>
+                        <span class="skill-tag">Regression Analysis</span>
+                        <span class="skill-tag">A/B Testing</span>
+                        <span class="skill-tag">Fairness Analysis</span>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <h3>Data Visualization</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Matplotlib</span>
+                        <span class="skill-tag">Seaborn</span>
+                        <span class="skill-tag">Plotly</span>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <h3>Tools & Databases</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Jupyter Notebooks</span>
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">MySQL</span>
+                        <span class="skill-tag">SQLite</span>
+                        <span class="skill-tag">Docker</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section class="section">
+            <h2 class="section-title">Data Science Projects</h2>
+            <div class="projects-grid">
+
+                <!-- Project 1: Food Calories Prediction -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Recipe Calorie Prediction Using ML</h3>
+                        <p class="project-meta">Feature Engineering • Regression • DSC 80</p>
+                    </div>
+                    <div class="project-body">
+                        <p class="project-description">
+                            Analyzed 83,782 Food.com recipes to predict calorie content using recipe features. 
+                            Conducted comprehensive fairness analysis revealing systematic prediction bias for desserts.
+                        </p>
+                        <div class="findings-section">
+                            <h4>🔍 Key Findings</h4>
+                            <ul class="findings-list">
+                                <li><strong>Ridge Regression Performance:</strong> Final model achieved RMSE = 577.43 calories with feature engineering</li>
+                                <li><strong>Nutritional Content vs Ratings:</strong> No relationship found (p = 1.0) - users rate based on taste, not health metrics</li>
+                                <li><strong>Model Unfairness Detected:</strong> RMSE for desserts (928 cal) more than double non-desserts (445 cal)</li>
+                                <li><strong>Feature Engineering Impact:</strong> Added 9 engineered features (tags, ingredients, transformations) improved baseline by 1%</li>
+                                <li><strong>Missing Data Analysis:</strong> Rating missingness depends on preparation time and complexity (p < 0.001)</li>
+                                <li><strong>Key Limitation:</strong> Lack of ingredient quantities prevents accurate calorie prediction</li>
+                            </ul>
+                        </div>
+                        <div class="tech-stack">
+                            <span class="tech-badge">Python</span>
+                            <span class="tech-badge">Ridge Regression</span>
+                            <span class="tech-badge">Feature Engineering</span>
+                            <span class="tech-badge">Pandas</span>
+                            <span class="tech-badge">Hypothesis Testing</span>
+                            <span class="tech-badge">Fairness Analysis</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://edisonayranisthebest.github.io/food-calories-prediction/" target="_blank" class="project-link">
+                                🌐 View Project Website
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2: Amazon Recommender System -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Amazon Video Game Rating Prediction</h3>
+                        <p class="project-meta">Machine Learning • Collaborative Filtering • CSE 158</p>
+                    </div>
+                    <div class="project-body">
+                        <p class="project-description">
+                            Developed a recommendation system to predict user ratings (1-5 stars) for Amazon video game products 
+                            using collaborative filtering techniques. Analyzed 4.2M+ reviews to understand user preferences and item quality.
+                        </p>
+                        <div class="findings-section">
+                            <h4>🔍 Key Findings</h4>
+                            <ul class="findings-list">
+                                <li><strong>Bias Model Outperformed Complex Approaches:</strong> Simple user + item bias model achieved best performance (MSE: 1.7276) vs Matrix Factorization (MSE: 1.7469)</li>
+                                <li><strong>15.61% Error Reduction:</strong> Captured systematic user and item effects that dominate rating patterns</li>
+                                <li><strong>Diminishing Returns from Complexity:</strong> Additional latent factors provided no improvement, suggesting strong bias patterns but weak latent structure</li>
+                                <li><strong>Data Characteristics:</strong> Positive skew with most ratings 4-5 stars (mean = 4.048), indicating generous rating behavior</li>
+                            </ul>
+                        </div>
+                        <div class="tech-stack">
+                            <span class="tech-badge">Python</span>
+                            <span class="tech-badge">NumPy</span>
+                            <span class="tech-badge">Pandas</span>
+                            <span class="tech-badge">Scikit-Learn</span>
+                            <span class="tech-badge">Collaborative Filtering</span>
+                            <span class="tech-badge">Matrix Factorization</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/EdisonAyranisthebest/Amazon-Rating-Prediction-" target="_blank" class="project-link">
+                                📓 View Notebook
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3: Supermarket Sales Forecasting -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Supermarket Sales Forecasting</h3>
+                        <p class="project-meta">Time Series Analysis • Regression • March - April 2025</p>
+                    </div>
+                    <div class="project-body">
+                        <p class="project-description">
+                            Built multiple forecasting models (Linear Regression, Prophet, ARIMA, XGBoost) to predict daily sales 
+                            for supermarket branches in Myanmar. Analyzed 3 months of transaction data to optimize inventory and staffing.
+                        </p>
+                        <div class="findings-section">
+                            <h4>🔍 Key Findings</h4>
+                            <ul class="findings-list">
+                                <li><strong>Linear Regression Baseline:</strong> Achieved R² = 0.90 and MSE = 6,232.30 using transaction-level features</li>
+                                <li><strong>XGBoost Best Performance:</strong> Leveraged lag features to achieve R² = -0.20 with complex pattern recognition</li>
+                                <li><strong>Prophet for Interpretability:</strong> Best balance of interpretability and seasonality modeling with holiday effects</li>
+                                <li><strong>Temporal Features Critical:</strong> Past sales and weekly cycles strongly influence future outcomes</li>
+                                <li><strong>Holiday Impact:</strong> Incorporating Myanmar holidays improved forecast realism significantly</li>
+                            </ul>
+                        </div>
+                        <div class="tech-stack">
+                            <span class="tech-badge">Python</span>
+                            <span class="tech-badge">Prophet</span>
+                            <span class="tech-badge">ARIMA</span>
+                            <span class="tech-badge">XGBoost</span>
+                            <span class="tech-badge">Pandas</span>
+                            <span class="tech-badge">Seaborn</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/EdisonAyranisthebest/Supermarket-Sales-Forecasting" target="_blank" class="project-link">
+                                📓 View Notebook
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4: Telco Customer Churn -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Telco Customer Segmentation & Churn Prediction</h3>
+                        <p class="project-meta">Classification • Clustering • March - April 2025</p>
+                    </div>
+                    <div class="project-body">
+                        <p class="project-description">
+                            Combined unsupervised learning (KMeans clustering) for customer segmentation with supervised learning 
+                            (Random Forest) for churn prediction on 7,043 telecom customers. Identified at-risk customers and behavior patterns.
+                        </p>
+                        <div class="findings-section">
+                            <h4>🔍 Key Findings</h4>
+                            <ul class="findings-list">
+                                <li><strong>Customer Segmentation:</strong> Successfully categorized customers into distinct groups using KMeans clustering based on usage patterns and demographics</li>
+                                <li><strong>Churn Prediction Model:</strong> Random Forest classifier identified key factors driving customer churn with high accuracy</li>
+                                <li><strong>Feature Engineering:</strong> Applied one-hot encoding and standardization with PCA for dimensionality reduction</li>
+                                <li><strong>Actionable Insights:</strong> Provided targeted intervention strategies for high-risk customer segments</li>
+                            </ul>
+                        </div>
+                        <div class="tech-stack">
+                            <span class="tech-badge">Python</span>
+                            <span class="tech-badge">Scikit-Learn</span>
+                            <span class="tech-badge">KMeans</span>
+                            <span class="tech-badge">Random Forest</span>
+                            <span class="tech-badge">PCA</span>
+                            <span class="tech-badge">Seaborn</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/EdisonAyranisthebest/Telco-Customer-Churn-" target="_blank" class="project-link">
+                                📓 View Notebook
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5: Video Game Sentiment Analysis -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Video Game Reviews Sentiment Analysis</h3>
+                        <p class="project-meta">NLP • Sentiment Classification • July - August 2023</p>
+                    </div>
+                    <div class="project-body">
+                        <p class="project-description">
+                            Conducted sentiment analysis on Steam video game reviews using VADER and RoBERTa models. 
+                            Compared model performance to understand user sentiments and improve recommendation systems.
+                        </p>
+                        <div class="findings-section">
+                            <h4>🔍 Key Findings</h4>
+                            <ul class="findings-list">
+                                <li><strong>RoBERTa Outperformed VADER:</strong> Showed more nuanced sentiment analysis across different review categories</li>
+                                <li><strong>Strong Negative Detection:</strong> Both models successfully identified negative reviews without confusing 5-star ratings</li>
+                                <li><strong>Challenges with Sarcasm:</strong> Models struggled with symbols, sarcasm, slang, and non-English content</li>
+                                <li><strong>Visualization Insights:</strong> Bar plots and pair plots revealed distribution and correlation of sentiment scores with ratings</li>
+                                <li><strong>Model Comparison:</strong> VADER showed strong negative/moderate prediction while RoBERTa excelled in categorical nuance</li>
+                            </ul>
+                        </div>
+                        <div class="tech-stack">
+                            <span class="tech-badge">Python</span>
+                            <span class="tech-badge">NLTK</span>
+                            <span class="tech-badge">VADER</span>
+                            <span class="tech-badge">RoBERTa</span>
+                            <span class="tech-badge">Pandas</span>
+                            <span class="tech-badge">Matplotlib</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/EdisonAyranisthebest/churn-Video-Game-Sentiment-Analysis" target="_blank" class="project-link">
+                                📓 View Notebook
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 6: CO2 Emissions Prediction -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Vehicle CO2 Emission Prediction</h3>
+                        <p class="project-meta">Regression • Environmental Analysis • April - May 2023</p>
+                    </div>
+                    <div class="project-body">
+                        <p class="project-description">
+                            Developed regression models to predict CO2 emissions from vehicles based on engine size, fuel consumption, 
+                            and other features. Compared 6 different algorithms to find optimal prediction accuracy.
+                        </p>
+                        <div class="findings-section">
+                            <h4>🔍 Key Findings</h4>
+                            <ul class="findings-list">
+                                <li><strong>Gradient Boosting Best Model:</strong> Achieved MSE = 12.36 and R² = 0.9947 on test data</li>
+                                <li><strong>XGBoost Close Second:</strong> Strong performance with MSE = 12.43 and R² = 0.9946</li>
+                                <li><strong>Ridge Regression Generalization:</strong> Better test performance (MSE: 13.68, R²: 0.9941) than Linear Regression despite similar training metrics</li>
+                                <li><strong>Linear Model Overfitting:</strong> Showed poor test performance suggesting need for regularization</li>
+                                <li><strong>K-Neighbors Performance:</strong> Reasonable results with MSE = 128.29 and R² = 0.9445</li>
+                            </ul>
+                        </div>
+                        <div class="tech-stack">
+                            <span class="tech-badge">Python</span>
+                            <span class="tech-badge">Scikit-Learn</span>
+                            <span class="tech-badge">XGBoost</span>
+                            <span class="tech-badge">Gradient Boosting</span>
+                            <span class="tech-badge">Ridge Regression</span>
+                            <span class="tech-badge">Matplotlib</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/EdisonAyranisthebest/CO2-Emissions-Prediction-" target="_blank" class="project-link">
+                                📓 View Notebook
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 7: Car Sales Prediction -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Car Sales Price Prediction</h3>
+                        <p class="project-meta">Clustering • Regression • April - May 2025</p>
+                    </div>
+                    <div class="project-body">
+                        <p class="project-description">
+                            Applied KMeans clustering to segment 157 car models, then built Random Forest and XGBoost models 
+                            to predict sale prices. Used GridSearchCV for hyperparameter optimization.
+                        </p>
+                        <div class="findings-section">
+                            <h4>🔍 Key Findings</h4>
+                            <ul class="findings-list">
+                                <li><strong>Tuned XGBoost Winner:</strong> Best model with RMSE = 8.58 and R² = 0.811 after hyperparameter optimization</li>
+                                <li><strong>Random Forest Baseline:</strong> Strong baseline performance with RMSE = 8.91 and R² = 0.796</li>
+                                <li><strong>Market Segmentation:</strong> Successfully identified luxury vs economy segments based on price, engine size, and horsepower</li>
+                                <li><strong>GridSearchCV Optimization:</strong> Hyperparameter tuning improved XGBoost by 5.6% over default settings</li>
+                            </ul>
+                        </div>
+                        <div class="tech-stack">
+                            <span class="tech-badge">Python</span>
+                            <span class="tech-badge">KMeans</span>
+                            <span class="tech-badge">Random Forest</span>
+                            <span class="tech-badge">XGBoost</span>
+                            <span class="tech-badge">GridSearchCV</span>
+                            <span class="tech-badge">Seaborn</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/EdisonAyranisthebest/Car-Sales-Prediction-" target="_blank" class="project-link">
+                                📓 View Notebook
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Edison Ayran. All rights reserved.</p>
+        <p style="margin-top: 0.5rem; font-size: 0.9rem;">Data Science Student at UC San Diego</p>
+    </footer>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // Smooth scroll for scroll indicator
+        document.querySelector('.scroll-indicator').addEventListener('click', () => {
+            window.scrollTo({
+                top: window.innerHeight,
+                behavior: 'smooth'
+            });
+        });
+
+        // Fade in animations on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'f
