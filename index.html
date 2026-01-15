@@ -433,7 +433,7 @@
                 Experienced in supervised learning (regression, classification, tree-based and instance-based models) and unsupervised learning (clustering and representation learning). 
                 Strong background in deep learning, including neural networks, CNNs, RNNs, and transformer-based models. 
                 Proficient in SQL and database management, data analysis, statistical modeling, feature engineering, and model evaluation. 
-                Actively seeking data science, data engineering, or machine learning roles where I can apply my technical skills, continue learning, and contribute to data-driven teams with real-world impact.
+                Actively seeking data science, data engineering, data analyst, or machine learning roles where I can apply my technical skills, continue learning, and contribute to data-driven teams with real-world impact.
             </p>
             <p class="hero-description" style="margin-top: 1rem; font-size: 1rem;">
                 Currently pursuing B.S. in Data Science at UC San Diego. Data Engineering Intern at Young Progressives Initiative, building and maintaining SQL databases to support volunteer and campaign operations, implementing data cleaning workflows, and partnering with the digital communications team to deliver data-driven insights. Research Analyst at Triton Ball Sports Analytics, analyzing player and team performance for UCSD sports teams using in-game and training data to optimize lineups and formations. Active member of Data Science Student Society, participating in machine learning projects with quarterly presentations.
@@ -615,7 +615,49 @@
                     </div>
                 </div>
 
-                <!-- Project 2: Expected Goals Deep Learning -->
+                <!-- Project 2: NBA Performance Prediction with LSTM -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>NBA Player Performance Prediction with LSTM</h3>
+                        <p class="project-meta">Deep Learning • LSTM • Time Series • Sports Analytics • January 2025</p>
+                    </div>
+                    <div class="project-body">
+                        <img src="images/nba-lstm.png" alt="NBA Performance Prediction with LSTM" class="project-image">
+                        <p class="project-description">
+                            Built a recurrent neural network (LSTM) with player embeddings to predict NBA player performance trajectories using game-by-game statistics from 2022-2024 seasons. 
+                            Tackled the challenging task of cross-player generalization by training on some players and testing on completely unseen players, demonstrating that the model learns 
+                            generalizable temporal patterns rather than memorizing player-specific statistics.
+                        </p>
+                        <div class="findings-section">
+                            <h4>🔍 Key Findings</h4>
+                            <ul class="findings-list">
+                                <li><strong>Cross-Player Generalization:</strong> LSTM achieved RMSE of 1.0085 and outperformed Gradient Boosting baseline by 30.7% on completely unseen test players</li>
+                                <li><strong>Temporal Pattern Learning:</strong> 10-game sequence windows capture momentum, hot/cold streaks, and performance dynamics that static models miss</li>
+                                <li><strong>Professional Dataset:</strong> Trained on 3,543 sequences from 2,000+ games across 30 NBA players (all-stars and high-usage players) from 2022-2024 seasons</li>
+                                <li><strong>Per-Player Normalization:</strong> Z-score normalization relative to each player's baseline enables learning temporal patterns across different skill levels</li>
+                                <li><strong>Player Embeddings:</strong> 8-dimensional learned representations capture player-specific biases while maintaining generalizability to new players</li>
+                                <li><strong>Efficient Architecture:</strong> 24,113 trainable parameters with single LSTM layer (64 hidden units) prevents overfitting while capturing temporal dependencies</li>
+                            </ul>
+                        </div>
+                        <div class="tech-stack">
+                            <span class="tech-badge">Python</span>
+                            <span class="tech-badge">PyTorch</span>
+                            <span class="tech-badge">LSTM</span>
+                            <span class="tech-badge">Time Series</span>
+                            <span class="tech-badge">Player Embeddings</span>
+                            <span class="tech-badge">NBA API</span>
+                            <span class="tech-badge">Sports Analytics</span>
+                            <span class="tech-badge">Sequence Modeling</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/EdisonAyranisthebest/nba-lstm" target="_blank" class="project-link">
+                                📓 View Notebook
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3: Expected Goals Deep Learning -->
                 <div class="project-card">
                     <div class="project-header">
                         <h3>Expected Goals (xG) Prediction with Deep Neural Networks</h3>
@@ -657,7 +699,7 @@
                     </div>
                 </div>
 
-                <!-- Project 3: Neural Collaborative Filtering -->
+                <!-- Project 4: Neural Collaborative Filtering -->
                 <div class="project-card">
                     <div class="project-header">
                         <h3>Neural Collaborative Filtering Recommender System</h3>
@@ -699,7 +741,7 @@
                     </div>
                 </div>
 
-                <!-- Project 4: Food Calories Prediction -->
+                <!-- Project 5: Food Calories Prediction -->
                 <div class="project-card">
                     <div class="project-header">
                         <h3>Recipe Calorie Prediction Using ML</h3>
@@ -738,7 +780,7 @@
                     </div>
                 </div>
 
-                <!-- Project 5: Amazon Recommender System -->
+                <!-- Project 6: Amazon Recommender System -->
                 <div class="project-card">
                     <div class="project-header">
                         <h3>Amazon Video Game Rating Prediction</h3>
@@ -775,7 +817,7 @@
                     </div>
                 </div>
 
-                <!-- Project 6: Supermarket Sales Forecasting -->
+                <!-- Project 7: Supermarket Sales Forecasting -->
                 <div class="project-card">
                     <div class="project-header">
                         <h3>Supermarket Sales Forecasting</h3>
@@ -813,7 +855,7 @@
                     </div>
                 </div>
 
-                <!-- Project 7: Telco Customer Churn -->
+                <!-- Project 8: Telco Customer Churn -->
                 <div class="project-card">
                     <div class="project-header">
                         <h3>Telco Customer Segmentation & Churn Prediction</h3>
@@ -850,7 +892,7 @@
                     </div>
                 </div>
 
-                <!-- Project 8: Video Game Sentiment Analysis -->
+                <!-- Project 9: Video Game Sentiment Analysis -->
                 <div class="project-card">
                     <div class="project-header">
                         <h3>Video Game Reviews Sentiment Analysis</h3>
@@ -888,7 +930,7 @@
                     </div>
                 </div>
 
-                <!-- Project 9: CO2 Emissions Prediction -->
+                <!-- Project 10: CO2 Emissions Prediction -->
                 <div class="project-card">
                     <div class="project-header">
                         <h3>Vehicle CO2 Emission Prediction</h3>
@@ -926,7 +968,7 @@
                     </div>
                 </div>
 
-                <!-- Project 10: Car Sales Prediction -->
+                <!-- Project 11: Car Sales Prediction -->
                 <div class="project-card">
                     <div class="project-header">
                         <h3>Car Sales Price Prediction</h3>
