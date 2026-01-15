@@ -430,19 +430,17 @@
             <p class="hero-subtitle">Data Science Student • UC San Diego</p>
             <p class="hero-description">
                 Passionate about leveraging machine learning and statistical analysis to solve real-world problems. 
-                Skilled in supervised learning algorithms including linear regression, classification, decision trees, k-nearest neighbors, 
-                boosting, and perceptrons, as well as unsupervised learning techniques such as k-means and hierarchical clustering. 
-                Experienced in sentiment analysis, deep learning with neural networks, CNNs, RNNs, and transformers. Proficient in database 
-                management and SQL, data analysis, data visualization, statistical modeling, feature engineering, and model evaluation. 
-                Actively seeking data science, data engineering, machine learning, or data analyst roles where I can apply my technical 
-                skills, continue learning, and contribute to data-driven teams to make real-world impact.
+                Experienced in supervised learning (regression, classification, tree-based and instance-based models) and unsupervised learning (clustering and representation learning). 
+                Strong background in deep learning, including neural networks, CNNs, RNNs, and transformer-based models. 
+                Proficient in SQL and database management, data analysis, statistical modeling, feature engineering, and model evaluation. 
+                Actively seeking data science, data engineering, or machine learning roles where I can apply my technical skills, continue learning, and contribute to data-driven teams with real-world impact.
             </p>
             <p class="hero-description" style="margin-top: 1rem; font-size: 1rem;">
                 Currently pursuing B.S. in Data Science at UC San Diego. Data Engineering Intern at Young Progressives Initiative, building and maintaining SQL databases to support volunteer and campaign operations, implementing data cleaning workflows, and partnering with the digital communications team to deliver data-driven insights. Research Analyst at Triton Ball Sports Analytics, analyzing player and team performance for UCSD sports teams using in-game and training data to optimize lineups and formations. Active member of Data Science Student Society, participating in machine learning projects with quarterly presentations.
             </p>
             <div class="contact-info">
                 <a href="tel:+16196537725">📞 (619) 653-7725</a>
-                <a href="/cdn-cgi/l/email-protection#ef8a8b8e969d8e81af9a8c9c8bc18a8b9a">📧 <span class="__cf_email__" data-cfemail="335657524a41525d73465040571d565746">[email&#160;protected]</span></a>
+                <a href="mailto:eayran@ucsd.edu">📧 eayran@ucsd.edu</a>
                 <a href="https://www.linkedin.com/in/edison-ayran-0859082b3/" target="_blank">💼 LinkedIn</a>
             </div>
         </div>
@@ -575,40 +573,43 @@
             <h2 class="section-title">Data Science Projects</h2>
             <div class="projects-grid">
 
-                <!-- Project 1: Food Calories Prediction -->
+                <!-- Project 1: Spatial-Aware CNN for Soccer -->
                 <div class="project-card">
                     <div class="project-header">
-                        <h3>Recipe Calorie Prediction Using ML</h3>
-                        <p class="project-meta">Feature Engineering • Regression • DSC 80</p>
+                        <h3>Spatial-Aware CNN for Shot Success Prediction</h3>
+                        <p class="project-meta">Deep Learning • CNN • PyTorch • Sports Analytics • January 2025</p>
                     </div>
                     <div class="project-body">
-                        <img src="images/food-calories.png" alt="Food Calories Prediction" class="project-image">
+                        <img src="images/spatial-cnn-soccer.png" alt="Spatial-Aware CNN for Soccer" class="project-image">
                         <p class="project-description">
-                            Analyzed 83,782 Food.com recipes to predict calorie content using recipe features. 
-                            Conducted comprehensive fairness analysis revealing systematic prediction bias for desserts.
+                            Built a custom convolutional neural network that learns spatial patterns from soccer event data to predict shot success. 
+                            Converted professional soccer event data into multi-channel 2D spatial representations, demonstrating deep understanding of 
+                            CNNs beyond standard image classification by applying spatial feature learning to non-image data.
                         </p>
                         <div class="findings-section">
                             <h4>🔍 Key Findings</h4>
                             <ul class="findings-list">
-                                <li><strong>Ridge Regression Performance:</strong> Final model achieved RMSE = 577.43 calories with feature engineering</li>
-                                <li><strong>Nutritional Content vs Ratings:</strong> No relationship found (p = 1.0) - users rate based on taste, not health metrics</li>
-                                <li><strong>Model Unfairness Detected:</strong> RMSE for desserts (928 cal) more than double non-desserts (445 cal)</li>
-                                <li><strong>Feature Engineering Impact:</strong> Added 9 engineered features (tags, ingredients, transformations) improved baseline by 1%</li>
-                                <li><strong>Missing Data Analysis:</strong> Rating missingness depends on preparation time and complexity (p < 0.001)</li>
-                                <li><strong>Key Limitation:</strong> Lack of ingredient quantities prevents accurate calorie prediction</li>
+                                <li><strong>Superior Spatial Understanding:</strong> CNN achieved 86.05% accuracy and 0.7223 ROC-AUC, outperforming MLP baseline on spatial reasoning tasks</li>
+                                <li><strong>Recall Improvement:</strong> 31.2% better recall than MLP baseline, proving CNNs excel at capturing spatial relationships in shot scenarios</li>
+                                <li><strong>Multi-Channel Spatial Maps:</strong> Engineered 5-channel inputs (shot location, defenders, goalkeeper, distance, angle) as 32×32 spatial grids</li>
+                                <li><strong>Custom CNN Architecture:</strong> 3 convolutional blocks with progressive feature extraction (32→64→128 channels) and batch normalization</li>
+                                <li><strong>Professional Dataset:</strong> Trained on 2,545 professional soccer shots from StatsBomb (FIFA World Cup 2018, La Liga) with freeze frame data</li>
+                                <li><strong>Proven Spatial Advantage:</strong> Direct CNN vs MLP comparison demonstrates importance of preserving spatial structure in field position data</li>
                             </ul>
                         </div>
                         <div class="tech-stack">
                             <span class="tech-badge">Python</span>
-                            <span class="tech-badge">Ridge Regression</span>
-                            <span class="tech-badge">Feature Engineering</span>
-                            <span class="tech-badge">Pandas</span>
-                            <span class="tech-badge">Hypothesis Testing</span>
-                            <span class="tech-badge">Fairness Analysis</span>
+                            <span class="tech-badge">PyTorch</span>
+                            <span class="tech-badge">CNNs</span>
+                            <span class="tech-badge">Spatial Feature Learning</span>
+                            <span class="tech-badge">Multi-Channel Input</span>
+                            <span class="tech-badge">Batch Normalization</span>
+                            <span class="tech-badge">Sports Analytics</span>
+                            <span class="tech-badge">StatsBomb Data</span>
                         </div>
                         <div class="project-links">
-                            <a href="https://edisonayranisthebest.github.io/food-calories-prediction/" target="_blank" class="project-link">
-                                🌐 View Project Website
+                            <a href="https://github.com/EdisonAyranisthebest/Spatial-CNN-Soccer" target="_blank" class="project-link">
+                                📓 View Notebook
                             </a>
                         </div>
                     </div>
@@ -656,7 +657,88 @@
                     </div>
                 </div>
 
-                <!-- Project 3: Amazon Recommender System -->
+                <!-- Project 3: Neural Collaborative Filtering -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Neural Collaborative Filtering Recommender System</h3>
+                        <p class="project-meta">Deep Learning • PyTorch • Recommender Systems • January 2025</p>
+                    </div>
+                    <div class="project-body">
+                        <img src="images/neural-collaborative-filtering.png" alt="Neural Collaborative Filtering" class="project-image">
+                        <p class="project-description">
+                            Built a deep learning recommender system using neural collaborative filtering with learned embeddings on MovieLens dataset. 
+                            Implemented PyTorch-based architecture that models non-linear user-item interactions, moving beyond traditional matrix factorization 
+                            to capture complex preference patterns using embedding layers and multi-layer perceptrons.
+                        </p>
+                        <div class="findings-section">
+                            <h4>🔍 Key Findings</h4>
+                            <ul class="findings-list">
+                                <li><strong>Production-Ready Architecture:</strong> Trained on 54,433 user-movie interactions with 942 users and 1,447 items from MovieLens dataset</li>
+                                <li><strong>Learned Embeddings:</strong> Deep neural network learns dense vector representations capturing latent user preferences and item features</li>
+                                <li><strong>Ranking Performance:</strong> Achieved NDCG@10 of 0.0418, MAP@10 of 0.0283, and Hit Rate@10 of 8.70% on test set</li>
+                                <li><strong>Negative Sampling Strategy:</strong> Efficient training approach for implicit feedback by sampling items users haven't interacted with</li>
+                                <li><strong>Industry-Standard Metrics:</strong> Evaluated using NDCG, MAP, Precision@K, Recall@K, and Hit Rate for ranking quality assessment</li>
+                                <li><strong>Non-Linear Modeling:</strong> Captures complex user-item interactions that simple linear methods like matrix factorization cannot represent</li>
+                            </ul>
+                        </div>
+                        <div class="tech-stack">
+                            <span class="tech-badge">Python</span>
+                            <span class="tech-badge">PyTorch</span>
+                            <span class="tech-badge">Embedding Layers</span>
+                            <span class="tech-badge">Collaborative Filtering</span>
+                            <span class="tech-badge">Negative Sampling</span>
+                            <span class="tech-badge">NDCG</span>
+                            <span class="tech-badge">Recommender Systems</span>
+                            <span class="tech-badge">Ranking Metrics</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/EdisonAyranisthebest/neural-collaborative-filtering" target="_blank" class="project-link">
+                                📓 View Notebook
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4: Food Calories Prediction -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Recipe Calorie Prediction Using ML</h3>
+                        <p class="project-meta">Feature Engineering • Regression • DSC 80</p>
+                    </div>
+                    <div class="project-body">
+                        <img src="images/food-calories.png" alt="Food Calories Prediction" class="project-image">
+                        <p class="project-description">
+                            Analyzed 83,782 Food.com recipes to predict calorie content using recipe features. 
+                            Conducted comprehensive fairness analysis revealing systematic prediction bias for desserts.
+                        </p>
+                        <div class="findings-section">
+                            <h4>🔍 Key Findings</h4>
+                            <ul class="findings-list">
+                                <li><strong>Ridge Regression Performance:</strong> Final model achieved RMSE = 577.43 calories with feature engineering</li>
+                                <li><strong>Nutritional Content vs Ratings:</strong> No relationship found (p = 1.0) - users rate based on taste, not health metrics</li>
+                                <li><strong>Model Unfairness Detected:</strong> RMSE for desserts (928 cal) more than double non-desserts (445 cal)</li>
+                                <li><strong>Feature Engineering Impact:</strong> Added 9 engineered features (tags, ingredients, transformations) improved baseline by 1%</li>
+                                <li><strong>Missing Data Analysis:</strong> Rating missingness depends on preparation time and complexity (p < 0.001)</li>
+                                <li><strong>Key Limitation:</strong> Lack of ingredient quantities prevents accurate calorie prediction</li>
+                            </ul>
+                        </div>
+                        <div class="tech-stack">
+                            <span class="tech-badge">Python</span>
+                            <span class="tech-badge">Ridge Regression</span>
+                            <span class="tech-badge">Feature Engineering</span>
+                            <span class="tech-badge">Pandas</span>
+                            <span class="tech-badge">Hypothesis Testing</span>
+                            <span class="tech-badge">Fairness Analysis</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://edisonayranisthebest.github.io/food-calories-prediction/" target="_blank" class="project-link">
+                                🌐 View Project Website
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5: Amazon Recommender System -->
                 <div class="project-card">
                     <div class="project-header">
                         <h3>Amazon Video Game Rating Prediction</h3>
@@ -693,7 +775,7 @@
                     </div>
                 </div>
 
-                <!-- Project 4: Supermarket Sales Forecasting -->
+                <!-- Project 6: Supermarket Sales Forecasting -->
                 <div class="project-card">
                     <div class="project-header">
                         <h3>Supermarket Sales Forecasting</h3>
@@ -731,7 +813,7 @@
                     </div>
                 </div>
 
-                <!-- Project 5: Telco Customer Churn -->
+                <!-- Project 7: Telco Customer Churn -->
                 <div class="project-card">
                     <div class="project-header">
                         <h3>Telco Customer Segmentation & Churn Prediction</h3>
@@ -768,7 +850,7 @@
                     </div>
                 </div>
 
-                <!-- Project 6: Video Game Sentiment Analysis -->
+                <!-- Project 8: Video Game Sentiment Analysis -->
                 <div class="project-card">
                     <div class="project-header">
                         <h3>Video Game Reviews Sentiment Analysis</h3>
@@ -806,7 +888,7 @@
                     </div>
                 </div>
 
-                <!-- Project 7: CO2 Emissions Prediction -->
+                <!-- Project 9: CO2 Emissions Prediction -->
                 <div class="project-card">
                     <div class="project-header">
                         <h3>Vehicle CO2 Emission Prediction</h3>
@@ -844,7 +926,7 @@
                     </div>
                 </div>
 
-                <!-- Project 8: Car Sales Prediction -->
+                <!-- Project 10: Car Sales Prediction -->
                 <div class="project-card">
                     <div class="project-header">
                         <h3>Car Sales Price Prediction</h3>
@@ -882,3 +964,11 @@
                 </div>
 
             </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Edison Ayran. All rights reserved.</p>
+    </footer>
+</body>
+</html>
